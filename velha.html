@@ -1,1 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
 
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Jogo da Velha</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div class="container-jogo">
+
+        <a href="index.html" class="voltar">
+            ⬅ Voltar para o início
+        </a>
+
+        <h1>❌ Jogo da Velha ⭕</h1>
+
+        <p id="status">
+            Vez do jogador X
+        </p>
+
+        <div class="tabuleiro">
+
+            <div class="casa" onclick="jogar(0)"></div>
+            <div class="casa" onclick="jogar(1)"></div>
+            <div class="casa" onclick="jogar(2)"></div>
+
+            <div class="casa" onclick="jogar(3)"></div>
+            <div class="casa" onclick="jogar(4)"></div>
+            <div class="casa" onclick="jogar(5)"></div>
+
+            <div class="casa" onclick="jogar(6)"></div>
+            <div class="casa" onclick="jogar(7)"></div>
+            <div class="casa" onclick="jogar(8)"></div>
+
+        </div>
+
+        <button class="btn-reiniciar" onclick="reiniciar()">
+            🔄 Reiniciar
+        </button>
+
+    </div>
+
+    <script src="velha.js"></script>
+
+</body>
+
+</html>
