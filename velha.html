@@ -34,168 +34,38 @@
 
         </a>
 
-        <!-- Título do jogo -->
+        <!-- Título -->
         <h1>
 
             ❌ Jogo da Velha ⭕
 
         </h1>
 
-        <!-- ========================= -->
-        <!-- CONFIGURAÇÕES DO JOGO -->
-        <!-- ========================= -->
-
-        <div class="config-jogo">
-
-            <!-- Escolha do modo -->
-            <label for="modo">
-
-                🎮 Modo de jogo:
-
-            </label>
-
-            <br><br>
-
-            <select id="modo">
-
-                <option value="maquina">
-
-                    🤖 Contra a Máquina
-
-                </option>
-
-                <option value="2jogadores">
-
-                    👥 Dois Jogadores
-
-                </option>
-
-            </select>
-
-            <br><br>
-
-            <!-- Escolha do símbolo -->
-            <label for="simbolo">
-
-                ❌⭕ Escolha seu símbolo:
-
-            </label>
-
-            <br><br>
-
-            <select id="simbolo">
-
-                <option value="X">
-
-                    ❌ X
-
-                </option>
-
-                <option value="O">
-
-                    ⭕ O
-
-                </option>
-
-            </select>
-
-            <br><br>
-
-            <!-- Área da dificuldade -->
-            <div id="areaDificuldade">
-
-                <label for="dificuldade">
-
-                    🤖 Dificuldade:
-
-                </label>
-
-                <br><br>
-
-                <select id="dificuldade">
-
-                    <option value="facil">
-
-                        🟢 Fácil
-
-                    </option>
-
-                    <option value="medio">
-
-                        🟡 Médio
-
-                    </option>
-
-                    <option value="impossivel">
-
-                        🔴 Impossível
-
-                    </option>
-
-                </select>
-
-            </div>
-
-        </div>
-
-        <!-- ========================= -->
-        <!-- STATUS DO JOGO -->
-        <!-- ========================= -->
-
+        <!-- Status da partida -->
         <p id="status">
 
             Vez do jogador X
 
         </p>
 
-        <!-- ========================= -->
-        <!-- TABULEIRO -->
-        <!-- ========================= -->
-
+        <!-- Tabuleiro -->
         <div class="tabuleiro">
 
-            <div class="casa"
-                 onclick="jogar(0)">
-            </div>
+            <div class="casa" onclick="jogar(0)"></div>
+            <div class="casa" onclick="jogar(1)"></div>
+            <div class="casa" onclick="jogar(2)"></div>
 
-            <div class="casa"
-                 onclick="jogar(1)">
-            </div>
+            <div class="casa" onclick="jogar(3)"></div>
+            <div class="casa" onclick="jogar(4)"></div>
+            <div class="casa" onclick="jogar(5)"></div>
 
-            <div class="casa"
-                 onclick="jogar(2)">
-            </div>
-
-            <div class="casa"
-                 onclick="jogar(3)">
-            </div>
-
-            <div class="casa"
-                 onclick="jogar(4)">
-            </div>
-
-            <div class="casa"
-                 onclick="jogar(5)">
-            </div>
-
-            <div class="casa"
-                 onclick="jogar(6)">
-            </div>
-
-            <div class="casa"
-                 onclick="jogar(7)">
-            </div>
-
-            <div class="casa"
-                 onclick="jogar(8)">
-            </div>
+            <div class="casa" onclick="jogar(6)"></div>
+            <div class="casa" onclick="jogar(7)"></div>
+            <div class="casa" onclick="jogar(8)"></div>
 
         </div>
 
-        <!-- ========================= -->
-        <!-- BOTÃO DE REINICIAR -->
-        <!-- ========================= -->
-
+        <!-- Botão de reiniciar -->
         <button
             class="btn-reiniciar"
             onclick="reiniciar()">
@@ -206,10 +76,7 @@
 
     </div>
 
-    <!-- ========================= -->
-    <!-- JAVASCRIPT -->
-    <!-- ========================= -->
-
+    <!-- JavaScript -->
     <script src="velha.js"></script>
 
 </body>
