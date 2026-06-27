@@ -1,217 +1,165 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+// =========================
+// VARIÁVEIS DO JOGO
+// =========================
 
-<head>
+// Jogador que está na vez
+let jogadorAtual = "X";
 
-    <!-- ========================= -->
-    <!-- CONFIGURAÇÕES DA PÁGINA -->
-    <!-- ========================= -->
+// Estado do tabuleiro
+let tabuleiro = [
+    "", "", "",
+    "", "", "",
+    "", "", ""
+];
 
-    <meta charset="UTF-8">
+// Verifica se o jogo ainda está ativo
+let jogoAtivo = true;
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+// =========================
+// COMBINAÇÕES DE VITÓRIA
+// =========================
 
-    <title>Jogo da Velha</title>
+const combinacoesVitoria = [
 
-    <!-- Arquivo CSS -->
-    <link rel="stylesheet" href="style.css">
+    // Linhas
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
 
-</head>
+    // Colunas
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
 
-<body>
+    // Diagonais
+    [0, 4, 8],
+    [2, 4, 6]
 
-    <!-- ========================= -->
-    <!-- CONTAINER PRINCIPAL -->
-    <!-- ========================= -->
+];
 
-    <div class="container-jogo">
+// =========================
+// FUNÇÃO DE JOGAR
+// =========================
 
-        <!-- Botão para voltar -->
-        <a href="index.html" class="voltar">
+function jogar(posicao) {
 
-            ⬅ Voltar ao início
+    // Impede jogar em casa ocupada
+    // ou após o fim da partida
+    if (tabuleiro[posicao] !== "" || !jogoAtivo) {
+        return;
+    }
 
-        </a>
+    // Marca a posição
+    tabuleiro[posicao] = jogadorAtual;
 
-        <!-- Título do jogo -->
-        <h1>
+    // Atualiza a tela
+    const casas =
+        document.querySelectorAll(".casa");
 
-            ❌ Jogo da Velha ⭕
+    casas[posicao].innerText =
+        jogadorAtual;
 
-        </h1>
+    // Verifica vitória
+    verificarVitoria();
 
-        <!-- ========================= -->
-        <!-- CONFIGURAÇÕES DO JOGO -->
-        <!-- ========================= -->
+    // Se o jogo acabou, para aqui
+    if (!jogoAtivo) {
+        return;
+    }
 
-        <div class="config-jogo">
+    // Troca o jogador
+    jogadorAtual =
+        jogadorAtual === "X"
+            ? "O"
+            : "X";
 
-            <!-- Escolha do modo -->
-            <label for="modo">
+    // Atualiza o status
+    document.getElementById("status")
+        .innerText =
+        "Vez do jogador " +
+        jogadorAtual;
 
-                🎮 Modo de jogo:
+}
 
-            </label>
+// =========================
+// VERIFICAR VITÓRIA
+// =========================
 
-            <br><br>
+function verificarVitoria() {
 
-            <select id="modo">
+    // Percorre todas as combinações
+    for (let combinacao of combinacoesVitoria) {
 
-                <option value="maquina">
+        let a = combinacao[0];
+        let b = combinacao[1];
+        let c = combinacao[2];
 
-                    🤖 Contra a Máquina
+        // Se as 3 posições forem iguais
+        if (
 
-                </option>
+            tabuleiro[a] &&
+            tabuleiro[a] === tabuleiro[b] &&
+            tabuleiro[a] === tabuleiro[c]
 
-                <option value="2jogadores">
+        ) {
 
-                    👥 Dois Jogadores
+            document.getElementById("status")
+                .innerText =
+                "🏆 Jogador " +
+                tabuleiro[a] +
+                " venceu!";
 
-                </option>
+            jogoAtivo = false;
 
-            </select>
+            return;
 
-            <br><br>
+        }
 
-            <!-- Escolha do símbolo -->
-            <label for="simbolo">
+    }
 
-                ❌⭕ Escolha seu símbolo:
+    // Verifica empate
+    if (!tabuleiro.includes("")) {
 
-            </label>
+        document.getElementById("status")
+            .innerText =
+            "🤝 Empate!";
 
-            <br><br>
+        jogoAtivo = false;
 
-            <select id="simbolo">
+    }
 
-                <option value="X">
+}
 
-                    ❌ X
+// =========================
+// REINICIAR PARTIDA
+// =========================
 
-                </option>
+function reiniciar() {
 
-                <option value="O">
+    // Reinicia as variáveis
+    jogadorAtual = "X";
 
-                    ⭕ O
+    jogoAtivo = true;
 
-                </option>
+    tabuleiro = [
+        "", "", "",
+        "", "", "",
+        "", "", ""
+    ];
 
-            </select>
+    // Limpa o tabuleiro
+    const casas =
+        document.querySelectorAll(".casa");
 
-            <br><br>
+    casas.forEach(casa => {
 
-            <!-- Área da dificuldade -->
-            <div id="areaDificuldade">
+        casa.innerText = "";
 
-                <label for="dificuldade">
+    });
 
-                    🤖 Dificuldade:
+    // Atualiza o status
+    document.getElementById("status")
+        .innerText =
+        "Vez do jogador X";
 
-                </label>
-
-                <br><br>
-
-                <select id="dificuldade">
-
-                    <option value="facil">
-
-                        🟢 Fácil
-
-                    </option>
-
-                    <option value="medio">
-
-                        🟡 Médio
-
-                    </option>
-
-                    <option value="impossivel">
-
-                        🔴 Impossível
-
-                    </option>
-
-                </select>
-
-            </div>
-
-        </div>
-
-        <!-- ========================= -->
-        <!-- STATUS DO JOGO -->
-        <!-- ========================= -->
-
-        <p id="status">
-
-            Vez do jogador X
-
-        </p>
-
-        <!-- ========================= -->
-        <!-- TABULEIRO -->
-        <!-- ========================= -->
-
-        <div class="tabuleiro">
-
-            <div class="casa"
-                 onclick="jogar(0)">
-            </div>
-
-            <div class="casa"
-                 onclick="jogar(1)">
-            </div>
-
-            <div class="casa"
-                 onclick="jogar(2)">
-            </div>
-
-            <div class="casa"
-                 onclick="jogar(3)">
-            </div>
-
-            <div class="casa"
-                 onclick="jogar(4)">
-            </div>
-
-            <div class="casa"
-                 onclick="jogar(5)">
-            </div>
-
-            <div class="casa"
-                 onclick="jogar(6)">
-            </div>
-
-            <div class="casa"
-                 onclick="jogar(7)">
-            </div>
-
-            <div class="casa"
-                 onclick="jogar(8)">
-            </div>
-
-        </div>
-
-        <!-- ========================= -->
-        <!-- BOTÃO DE REINICIAR -->
-        <!-- ========================= -->
-
-        <button
-            class="btn-reiniciar"
-            onclick="reiniciar()">
-
-            🔄 Reiniciar
-
-        </button>
-
-    </div>
-
-    <!-- ========================= -->
-    <!-- JAVASCRIPT -->
-    <!-- ========================= -->
-
-    <script src="velha.js"></script>
-
-</body>
-
-</html>
+}
