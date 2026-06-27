@@ -163,3 +163,48 @@ function reiniciar() {
         "Vez do jogador X";
 
 }
+
+// =========================
+// CONFIGURAÇÃO DO MODO DE JOGO
+// =========================
+
+const modo = document.getElementById("modo");
+const areaDificuldade = document.getElementById("areaDificuldade");
+const simbolo = document.getElementById("simbolo");
+
+// Mostrar ou esconder a dificuldade
+function atualizarModo() {
+
+    // Se for 2 jogadores
+    if (modo.value === "2jogadores") {
+
+        areaDificuldade.style.display = "none";
+
+    }
+
+    // Se for contra a máquina
+    else {
+
+        areaDificuldade.style.display = "block";
+
+    }
+
+    // Reinicia a partida ao mudar configurações
+    reiniciar();
+
+}
+
+// Evento ao trocar o modo
+modo.addEventListener(
+    "change",
+    atualizarModo
+);
+
+// Evento ao trocar o símbolo
+simbolo.addEventListener(
+    "change",
+    reiniciar
+);
+
+// Executa quando a página carregar
+atualizarModo();
