@@ -2,27 +2,26 @@
 // VARIÁVEIS DO JOGO
 // =========================
 
-// Jogador que está na vez
 let jogadorAtual = "X";
 
-// Estado do tabuleiro
+let jogoAtivo = true;
+
 let tabuleiro = [
     "", "", "",
     "", "", "",
     "", "", ""
 ];
 
-// Verifica se o jogo ainda está ativo
-let jogoAtivo = true;
-
 // =========================
-// CONFIGURAÇÕES DO JOGO
+// CONFIGURAÇÕES
 // =========================
 
-// Guarda o modo atual
 let modoJogo = "2jogadores";
 
-// Guarda a dificuldade
+let simboloJogador = "X";
+
+let simboloMaquina = "O";
+
 let dificuldadeAtual = "facil";
 
 // =========================
@@ -31,106 +30,108 @@ let dificuldadeAtual = "facil";
 
 const combinacoesVitoria = [
 
-    // Linhas
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
+    [0,1,2],
+    [3,4,5],
+    [6,7,8],
 
-    // Colunas
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
+    [0,3,6],
+    [1,4,7],
+    [2,5,8],
 
-    // Diagonais
-    [0, 4, 8],
-    [2, 4, 6]
+    [0,4,8],
+    [2,4,6]
 
 ];
 
 // =========================
-// FUNÇÃO DE JOGAR
+// ELEMENTOS DA TELA
 // =========================
 
-function jogar(posicao) {
+const modo =
+    document.getElementById("modo");
 
-    // Impede jogar em casa ocupada
-    // ou após o fim da partida
-    if (tabuleiro[posicao] !== "" || !jogoAtivo) {
+const simbolo =
+    document.getElementById("simbolo");
+
+const dificuldade =
+    document.getElementById("dificuldade");
+
+const areaDificuldade =
+    document.getElementById("areaDificuldade");
+
+// =========================
+// JOGAR
+// =========================
+
+function jogar(posicao){
+
+    if(
+        tabuleiro[posicao] !== "" ||
+        !jogoAtivo
+    ){
         return;
     }
 
-    // Marca a posição
-    tabuleiro[posicao] = jogadorAtual;
+    if(
+        modoJogo === "maquina" &&
+        jogadorAtual !== simboloJogador
+    ){
+        return;
+    }
 
-    // Atualiza a tela
+    fazerJogada(posicao);
+
+}
+
+// =========================
+// FAZER JOGADA
+// =========================
+
+function fazerJogada(posicao){
+
+    tabuleiro[posicao] =
+        jogadorAtual;
+
     const casas =
         document.querySelectorAll(".casa");
 
     casas[posicao].innerText =
         jogadorAtual;
 
-    // Verifica vitória
     verificarVitoria();
 
-    // Se o jogo acabou, para aqui
-    if (!jogoAtivo) {
+    if(!jogoAtivo){
         return;
     }
 
-// Troca o jogador
-jogadorAtual =
-    jogadorAtual === "X"
-    ? "O"
-    : "X";
+    jogadorAtual =
+        jogadorAtual === "X"
+        ? "O"
+        : "X";
 
-// Atualiza o texto
-document.getElementById("status")
-    .innerText =
-    "Vez do jogador " +
-    jogadorAtual;
-
-// Se estiver no modo máquina
-if (
-
-    modoJogo === "maquina" &&
-    jogadorAtual === "O" &&
-    jogoAtivo
-
-) {
-
-    setTimeout(
-
-        jogadaMaquina,
-
-        500
-
-    );
+    document.getElementById("status")
+        .innerText =
+        "Vez do jogador " +
+        jogadorAtual;
 
 }
-
-}
-
 // =========================
 // VERIFICAR VITÓRIA
 // =========================
 
-function verificarVitoria() {
+function verificarVitoria(){
 
-    // Percorre todas as combinações
-    for (let combinacao of combinacoesVitoria) {
+    for(let combinacao of combinacoesVitoria){
 
         let a = combinacao[0];
         let b = combinacao[1];
         let c = combinacao[2];
 
-        // Se as 3 posições forem iguais
-        if (
-
+        if(
             tabuleiro[a] &&
             tabuleiro[a] === tabuleiro[b] &&
             tabuleiro[a] === tabuleiro[c]
-
-        ) {
+        ){
 
             document.getElementById("status")
                 .innerText =
@@ -141,31 +142,40 @@ function verificarVitoria() {
             jogoAtivo = false;
 
             return;
-
         }
-
     }
 
-    // Verifica empate
-    if (!tabuleiro.includes("")) {
+    if(!tabuleiro.includes("")){
 
         document.getElementById("status")
             .innerText =
             "🤝 Empate!";
 
         jogoAtivo = false;
-
     }
 
 }
 
 // =========================
-// REINICIAR PARTIDA
+// REINICIAR
 // =========================
 
-function reiniciar() {
+function reiniciar(){
 
-    // Reinicia as variáveis
+    simboloJogador =
+        simbolo.value;
+
+    simboloMaquina =
+        simboloJogador === "X"
+        ? "O"
+        : "X";
+
+    modoJogo =
+        modo.value;
+
+    dificuldadeAtual =
+        dificuldade.value;
+
     jogadorAtual = "X";
 
     jogoAtivo = true;
@@ -176,7 +186,6 @@ function reiniciar() {
         "", "", ""
     ];
 
-    // Limpa o tabuleiro
     const casas =
         document.querySelectorAll(".casa");
 
@@ -186,103 +195,105 @@ function reiniciar() {
 
     });
 
-    // Atualiza o status
     document.getElementById("status")
         .innerText =
         "Vez do jogador X";
 
-}
+    // Se estiver contra a máquina
+    if(
+        modoJogo === "maquina" &&
+        simboloJogador === "O"
+    ){
 
-// =========================
-// CONFIGURAÇÃO DO MODO DE JOGO
-// =========================
+        setTimeout(() => {
 
-const modo = document.getElementById("modo");
-const areaDificuldade = document.getElementById("areaDificuldade");
-const simbolo = document.getElementById("simbolo");
+            fazerJogadaMaquina();
 
-// =========================
-// ATUALIZAR MODO DE JOGO
-// =========================
-
-function atualizarModo() {
-
-    // Guarda o modo escolhido
-    modoJogo = modo.value;
-
-    // Se for 2 jogadores
-    if (modoJogo === "2jogadores") {
-
-        areaDificuldade.style.display = "none";
+        }, 500);
 
     }
 
-    // Se for contra a máquina
-    else {
-
-        areaDificuldade.style.display = "block";
-
-    }
-
-    // Reinicia a partida
-    reiniciar();
-
 }
-
-    // Se for contra a máquina
-    else {
-
-        areaDificuldade.style.display = "block";
-
-    }
-
-    // Reinicia a partida ao mudar configurações
-    reiniciar();
-
-}
-
-// Evento ao trocar o modo
-modo.addEventListener(
-    "change",
-    atualizarModo
-);
-
-// Evento ao trocar o símbolo
-simbolo.addEventListener(
-    "change",
-    reiniciar
-);
-
-// Executa quando a página carregar
-atualizarModo();
 
 // =========================
 // JOGADA DA MÁQUINA
 // =========================
 
-function jogadaMaquina() {
+function fazerJogadaMaquina(){
 
-    let casasLivres = [];
+    if(!jogoAtivo){
+        return;
+    }
 
-    // Procura casas vazias
-    for (let i = 0; i < 9; i++) {
+    let livres = [];
 
-        if (tabuleiro[i] === "") {
+    for(let i = 0; i < 9; i++){
 
-            casasLivres.push(i);
+        if(tabuleiro[i] === ""){
+
+            livres.push(i);
 
         }
 
     }
 
-    // Escolhe uma posição aleatória
-    let escolha = casasLivres[
-        Math.floor(
-            Math.random() * casasLivres.length
-        )
-    ];
+    let escolha =
+        livres[
+            Math.floor(
+                Math.random() *
+                livres.length
+            )
+        ];
 
-    // Faz a jogada
-    jogar(escolha);
+    fazerJogada(escolha);
 
 }
+
+// =========================
+// ATUALIZAR MODO
+// =========================
+
+function atualizarModo(){
+
+    if(modo.value === "2jogadores"){
+
+        areaDificuldade
+            .style
+            .display = "none";
+
+    }else{
+
+        areaDificuldade
+            .style
+            .display = "block";
+
+    }
+
+    reiniciar();
+
+}
+
+// =========================
+// EVENTOS
+// =========================
+
+modo.addEventListener(
+    "change",
+    atualizarModo
+);
+
+simbolo.addEventListener(
+    "change",
+    reiniciar
+);
+
+dificuldade.addEventListener(
+    "change",
+    reiniciar
+);
+
+// =========================
+// INICIAR
+// =========================
+
+atualizarModo();
