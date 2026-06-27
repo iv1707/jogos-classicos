@@ -3,10 +3,7 @@
 
 <head>
 
-    <!-- ========================= -->
-    <!-- CONFIGURAÇÕES DA PÁGINA -->
-    <!-- ========================= -->
-
+    <!-- Configurações da página -->
     <meta charset="UTF-8">
 
     <meta name="viewport"
@@ -14,21 +11,20 @@
 
     <title>Jogo da Velha</title>
 
-    <!-- Arquivo CSS -->
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 
 </head>
 
 <body>
 
-    <!-- ========================= -->
-    <!-- CONTAINER PRINCIPAL -->
-    <!-- ========================= -->
-
+    <!-- Container principal -->
     <div class="container-jogo">
 
-        <!-- Botão para voltar -->
-        <a href="index.html" class="voltar">
+        <!-- Voltar -->
+        <a
+            href="index.html"
+            class="voltar">
 
             ⬅ Voltar ao início
 
@@ -41,133 +37,151 @@
 
         </h1>
 
-       <!-- ========================= -->
-<!-- CONFIGURAÇÕES DO JOGO -->
-<!-- ========================= -->
+        <!-- Configurações -->
+        <div class="config-jogo">
 
-<div class="config-jogo">
+            <!-- Modo -->
+            <label>
 
-    <!-- Escolha do modo -->
-    <label for="modo">
+                🎮 Modo:
 
-        🎮 Modo de jogo:
+            </label>
 
-    </label>
+            <br><br>
 
-    <br><br>
+            <select id="modo">
 
-    <select id="modo">
+                <option value="2jogadores">
 
-        <option value="2jogadores">
+                    👥 Dois Jogadores
 
-            👥 Dois Jogadores
+                </option>
 
-        </option>
+                <option value="maquina">
 
-        <option value="maquina">
+                    🤖 Contra a Máquina
 
-            🤖 Contra a Máquina
+                </option>
 
-        </option>
+            </select>
 
-    </select>
+            <br><br>
 
-    <br><br>
+            <!-- Símbolo -->
+            <label>
 
-    <!-- Escolha do símbolo -->
-    <label for="simbolo">
+                ❌⭕ Seu símbolo:
 
-        ❌⭕ Quem começa?
+            </label>
 
-    </label>
+            <br><br>
 
-    <br><br>
+            <select id="simbolo">
 
-    <select id="simbolo">
+                <option value="X">
 
-        <option value="X">
+                    ❌ X
 
-            ❌ X
+                </option>
 
-        </option>
+                <option value="O">
 
-        <option value="O">
+                    ⭕
 
-            ⭕
+                    O
 
-            O
+                </option>
 
-        </option>
+            </select>
 
-    </select>
+            <br><br>
 
-    <br><br>
+            <!-- Dificuldade -->
+            <div id="areaDificuldade">
 
-    <!-- Dificuldade da máquina -->
-    <div id="areaDificuldade">
+                <label>
 
-        <label for="dificuldade">
+                    🤖 Dificuldade:
 
-            🤖 Dificuldade:
+                </label>
 
-        </label>
+                <br><br>
 
-        <br><br>
+                <select id="dificuldade">
 
-        <select id="dificuldade">
+                    <option value="facil">
 
-            <option value="facil">
+                        🟢 Fácil
 
-                🟢 Fácil
+                    </option>
 
-            </option>
+                    <option value="medio">
 
-            <option value="medio">
+                        🟡 Médio
 
-                🟡 Médio
+                    </option>
 
-            </option>
+                    <option value="impossivel">
 
-            <option value="impossivel">
+                        🔴 Impossível
 
-                🔴 Impossível
+                    </option>
 
-            </option>
+                </select>
 
-        </select>
+            </div>
 
-    </div>
+        </div>
 
-</div>
+        <!-- Status -->
+        <p id="status">
 
-<!-- ========================= -->
-<!-- STATUS DA PARTIDA -->
-<!-- ========================= -->
+            Vez do jogador X
 
-<p id="status">
-
-    Vez do jogador X
-
-</p>
+        </p>
 
         <!-- Tabuleiro -->
         <div class="tabuleiro">
 
-            <div class="casa" onclick="jogar(0)"></div>
-            <div class="casa" onclick="jogar(1)"></div>
-            <div class="casa" onclick="jogar(2)"></div>
+            <div class="casa"
+                 onclick="jogar(0)">
+            </div>
 
-            <div class="casa" onclick="jogar(3)"></div>
-            <div class="casa" onclick="jogar(4)"></div>
-            <div class="casa" onclick="jogar(5)"></div>
+            <div class="casa"
+                 onclick="jogar(1)">
+            </div>
 
-            <div class="casa" onclick="jogar(6)"></div>
-            <div class="casa" onclick="jogar(7)"></div>
-            <div class="casa" onclick="jogar(8)"></div>
+            <div class="casa"
+                 onclick="jogar(2)">
+            </div>
+
+            <div class="casa"
+                 onclick="jogar(3)">
+            </div>
+
+            <div class="casa"
+                 onclick="jogar(4)">
+            </div>
+
+            <div class="casa"
+                 onclick="jogar(5)">
+            </div>
+
+            <div class="casa"
+                 onclick="jogar(6)">
+            </div>
+
+            <div class="casa"
+                 onclick="jogar(7)">
+            </div>
+
+            <div class="casa"
+                 onclick="jogar(8)">
+            </div>
 
         </div>
 
-        <!-- Botão de reiniciar -->
+        <!-- Reiniciar -->
         <button
             class="btn-reiniciar"
             onclick="reiniciar()">
