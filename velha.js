@@ -16,6 +16,16 @@ let tabuleiro = [
 let jogoAtivo = true;
 
 // =========================
+// CONFIGURAÇÕES DO JOGO
+// =========================
+
+// Guarda o modo atual
+let modoJogo = "2jogadores";
+
+// Guarda a dificuldade
+let dificuldadeAtual = "facil";
+
+// =========================
 // COMBINAÇÕES DE VITÓRIA
 // =========================
 
