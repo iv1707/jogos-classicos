@@ -251,3 +251,29 @@ footer{
     }
 
 }
+
+/* CONFIGURAÇÃO DA DIFICULDADE */
+
+.config-jogo{
+    margin-bottom:20px;
+}
+
+.config-jogo label{
+    font-size:18px;
+    color:white;
+    margin-right:10px;
+}
+
+.config-jogo select{
+    background:#a78bfa;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:10px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.config-jogo select:hover{
+    background:#8b5cf6;
+}
