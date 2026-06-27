@@ -77,17 +77,36 @@ function jogar(posicao) {
         return;
     }
 
-    // Troca o jogador
-    jogadorAtual =
-        jogadorAtual === "X"
-            ? "O"
-            : "X";
+// Troca o jogador
+jogadorAtual =
+    jogadorAtual === "X"
+    ? "O"
+    : "X";
 
-    // Atualiza o status
-    document.getElementById("status")
-        .innerText =
-        "Vez do jogador " +
-        jogadorAtual;
+// Atualiza o texto
+document.getElementById("status")
+    .innerText =
+    "Vez do jogador " +
+    jogadorAtual;
+
+// Se estiver no modo máquina
+if (
+
+    modoJogo === "maquina" &&
+    jogadorAtual === "O" &&
+    jogoAtivo
+
+) {
+
+    setTimeout(
+
+        jogadaMaquina,
+
+        500
+
+    );
+
+}
 
 }
 
@@ -236,3 +255,34 @@ simbolo.addEventListener(
 
 // Executa quando a página carregar
 atualizarModo();
+
+// =========================
+// JOGADA DA MÁQUINA
+// =========================
+
+function jogadaMaquina() {
+
+    let casasLivres = [];
+
+    // Procura casas vazias
+    for (let i = 0; i < 9; i++) {
+
+        if (tabuleiro[i] === "") {
+
+            casasLivres.push(i);
+
+        }
+
+    }
+
+    // Escolhe uma posição aleatória
+    let escolha = casasLivres[
+        Math.floor(
+            Math.random() * casasLivres.length
+        )
+    ];
+
+    // Faz a jogada
+    jogar(escolha);
+
+}
