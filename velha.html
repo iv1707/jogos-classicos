@@ -1,84 +1,73 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<div class="container-jogo">
 
-<head>
+    <a href="index.html" class="voltar">
+        ⬅ Voltar para o início
+    </a>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <h1>❌ Jogo da Velha ⭕</h1>
 
-    <title>Jogo da Velha</title>
+    <div class="config-jogo">
 
-    <link rel="stylesheet" href="style.css">
+        <label>🎮 Modo de jogo:</label>
 
-</head>
+        <select id="modo">
 
-<body>
+            <option value="maquina">
+                🤖 Contra a Máquina
+            </option>
 
-    <div class="container-jogo">
+            <option value="2jogadores">
+                👥 Dois Jogadores
+            </option>
 
-        <a href="index.html" class="voltar">
-            ⬅ Voltar para o início
-        </a>
+        </select>
 
-        <h1>❌ Jogo da Velha ⭕</h1>
+        <br><br>
 
+        <label>
+            🤖 Dificuldade da Máquina:
+        </label>
 
-<div class="config-jogo">
+        <select id="dificuldade">
 
-    <label for="dificuldade">
-        🤖 Dificuldade da Máquina:
-    </label>
+            <option value="facil">
+                🟢 Fácil
+            </option>
 
-    <select id="dificuldade">
+            <option value="medio">
+                🟡 Médio
+            </option>
 
-        <option value="facil">
-            Fácil
-        </option>
+            <option value="impossivel">
+                🔴 Impossível
+            </option>
 
-        <option value="medio">
-            Médio
-        </option>
-
-        <option value="impossivel">
-            Impossível
-        </option>
-
-    </select>
-
-</div>
-
-<p id="status">
-    Vez do jogador X
-</p>
-
-        <p id="status">
-            Vez do jogador X
-        </p>
-
-        <div class="tabuleiro">
-
-            <div class="casa" onclick="jogar(0)"></div>
-            <div class="casa" onclick="jogar(1)"></div>
-            <div class="casa" onclick="jogar(2)"></div>
-
-            <div class="casa" onclick="jogar(3)"></div>
-            <div class="casa" onclick="jogar(4)"></div>
-            <div class="casa" onclick="jogar(5)"></div>
-
-            <div class="casa" onclick="jogar(6)"></div>
-            <div class="casa" onclick="jogar(7)"></div>
-            <div class="casa" onclick="jogar(8)"></div>
-
-        </div>
-
-        <button class="btn-reiniciar" onclick="reiniciar()">
-            🔄 Reiniciar
-        </button>
+        </select>
 
     </div>
 
-    <script src="velha.js"></script>
+    <p id="status">
+        Vez do jogador X
+    </p>
 
-</body>
+    <div class="tabuleiro">
 
-</html>
+        <div class="casa" onclick="jogar(0)"></div>
+        <div class="casa" onclick="jogar(1)"></div>
+        <div class="casa" onclick="jogar(2)"></div>
+
+        <div class="casa" onclick="jogar(3)"></div>
+        <div class="casa" onclick="jogar(4)"></div>
+        <div class="casa" onclick="jogar(5)"></div>
+
+        <div class="casa" onclick="jogar(6)"></div>
+        <div class="casa" onclick="jogar(7)"></div>
+        <div class="casa" onclick="jogar(8)"></div>
+
+    </div>
+
+    <button class="btn-reiniciar" onclick="reiniciar()">
+        🔄 Reiniciar
+    </button>
+
+</div>
