@@ -41,12 +41,114 @@
 
         </h1>
 
-        <!-- Status da partida -->
-        <p id="status">
+       <!-- ========================= -->
+<!-- CONFIGURAÇÕES DO JOGO -->
+<!-- ========================= -->
 
-            Vez do jogador X
+<div class="config-jogo">
 
-        </p>
+    <!-- Escolha do modo -->
+    <label for="modo">
+
+        🎮 Modo de jogo:
+
+    </label>
+
+    <br><br>
+
+    <select id="modo">
+
+        <option value="2jogadores">
+
+            👥 Dois Jogadores
+
+        </option>
+
+        <option value="maquina">
+
+            🤖 Contra a Máquina
+
+        </option>
+
+    </select>
+
+    <br><br>
+
+    <!-- Escolha do símbolo -->
+    <label for="simbolo">
+
+        ❌⭕ Quem começa?
+
+    </label>
+
+    <br><br>
+
+    <select id="simbolo">
+
+        <option value="X">
+
+            ❌ X
+
+        </option>
+
+        <option value="O">
+
+            ⭕
+
+            O
+
+        </option>
+
+    </select>
+
+    <br><br>
+
+    <!-- Dificuldade da máquina -->
+    <div id="areaDificuldade">
+
+        <label for="dificuldade">
+
+            🤖 Dificuldade:
+
+        </label>
+
+        <br><br>
+
+        <select id="dificuldade">
+
+            <option value="facil">
+
+                🟢 Fácil
+
+            </option>
+
+            <option value="medio">
+
+                🟡 Médio
+
+            </option>
+
+            <option value="impossivel">
+
+                🔴 Impossível
+
+            </option>
+
+        </select>
+
+    </div>
+
+</div>
+
+<!-- ========================= -->
+<!-- STATUS DA PARTIDA -->
+<!-- ========================= -->
+
+<p id="status">
+
+    Vez do jogador X
+
+</p>
 
         <!-- Tabuleiro -->
         <div class="tabuleiro">
