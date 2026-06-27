@@ -144,3 +144,205 @@ h1{
     }
 
 }
+
+/* ========================= */
+/* JOGO DA VELHA */
+/* ========================= */
+
+/* Container principal do jogo */
+
+.container-jogo{
+
+    max-width:700px;
+
+    margin:0 auto;
+
+    text-align:center;
+
+}
+
+/* Botão de voltar */
+
+.voltar{
+
+    display:inline-block;
+
+    margin-bottom:30px;
+
+    text-decoration:none;
+
+    color:#7dd3fc;
+
+    font-size:18px;
+
+    transition:0.3s;
+
+}
+
+.voltar:hover{
+
+    color:#86efac;
+
+}
+
+/* Área das configurações */
+
+.config-jogo{
+
+    margin:30px 0;
+
+}
+
+/* Títulos das opções */
+
+.config-jogo label{
+
+    font-size:18px;
+
+    font-weight:bold;
+
+}
+
+/* Caixas de seleção */
+
+.config-jogo select{
+
+    margin-top:10px;
+
+    padding:10px 15px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#86efac;
+
+    color:#1e293b;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+}
+
+/* Texto do status do jogo */
+
+#status{
+
+    margin:25px 0;
+
+    font-size:24px;
+
+    font-weight:bold;
+
+}
+
+/* Tabuleiro */
+
+.tabuleiro{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,120px);
+
+    gap:15px;
+
+    justify-content:center;
+
+    margin:30px auto;
+
+}
+
+/* Casas do tabuleiro */
+
+.casa{
+
+    width:120px;
+
+    height:120px;
+
+    background:#fde68a;
+
+    border-radius:20px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:60px;
+
+    font-weight:bold;
+
+    color:#1e293b;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+}
+
+.casa:hover{
+
+    transform:scale(1.05);
+
+    background:#fef3c7;
+
+}
+
+/* Botão de reiniciar */
+
+.btn-reiniciar{
+
+    background:#86efac;
+
+    color:#1e293b;
+
+    border:none;
+
+    padding:15px 30px;
+
+    border-radius:15px;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:0.3s;
+
+}
+
+.btn-reiniciar:hover{
+
+    transform:scale(1.05);
+
+    background:#bbf7d0;
+
+}
+
+/* ========================= */
+/* RESPONSIVIDADE */
+/* ========================= */
+
+@media(max-width:600px){
+
+    .tabuleiro{
+
+        grid-template-columns:repeat(3,90px);
+
+    }
+
+    .casa{
+
+        width:90px;
+
+        height:90px;
+
+        font-size:45px;
+
+    }
+
+}
