@@ -182,15 +182,33 @@ const modo = document.getElementById("modo");
 const areaDificuldade = document.getElementById("areaDificuldade");
 const simbolo = document.getElementById("simbolo");
 
-// Mostrar ou esconder a dificuldade
+// =========================
+// ATUALIZAR MODO DE JOGO
+// =========================
+
 function atualizarModo() {
 
+    // Guarda o modo escolhido
+    modoJogo = modo.value;
+
     // Se for 2 jogadores
-    if (modo.value === "2jogadores") {
+    if (modoJogo === "2jogadores") {
 
         areaDificuldade.style.display = "none";
 
     }
+
+    // Se for contra a máquina
+    else {
+
+        areaDificuldade.style.display = "block";
+
+    }
+
+    // Reinicia a partida
+    reiniciar();
+
+}
 
     // Se for contra a máquina
     else {
