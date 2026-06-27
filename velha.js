@@ -1,76 +1,217 @@
-<!-- ========================= -->
-<!-- CONFIGURAÇÕES DO JOGO -->
-<!-- ========================= -->
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-<div class="config-jogo">
+<head>
 
-    <!-- Escolha do modo -->
-    <label for="modo">
-        🎮 Modo de jogo:
-    </label>
+    <!-- ========================= -->
+    <!-- CONFIGURAÇÕES DA PÁGINA -->
+    <!-- ========================= -->
 
-    <br>
+    <meta charset="UTF-8">
 
-    <select id="modo">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-        <option value="maquina">
-            🤖 Contra a Máquina
-        </option>
+    <title>Jogo da Velha</title>
 
-        <option value="2jogadores">
-            👥 Dois Jogadores
-        </option>
+    <!-- Arquivo CSS -->
+    <link rel="stylesheet" href="style.css">
 
-    </select>
+</head>
 
-    <br><br>
+<body>
 
-    <!-- Escolha do símbolo -->
-    <label for="simbolo">
-        ❌⭕ Escolha seu símbolo:
-    </label>
+    <!-- ========================= -->
+    <!-- CONTAINER PRINCIPAL -->
+    <!-- ========================= -->
 
-    <br>
+    <div class="container-jogo">
 
-    <select id="simbolo">
+        <!-- Botão para voltar -->
+        <a href="index.html" class="voltar">
 
-        <option value="X">
-            ❌ X
-        </option>
+            ⬅ Voltar ao início
 
-        <option value="O">
-            ⭕ O
-        </option>
+        </a>
 
-    </select>
+        <!-- Título do jogo -->
+        <h1>
 
-    <br><br>
+            ❌ Jogo da Velha ⭕
 
-    <!-- Dificuldade da máquina -->
-    <div id="areaDificuldade">
+        </h1>
 
-        <label for="dificuldade">
-            🤖 Dificuldade:
-        </label>
+        <!-- ========================= -->
+        <!-- CONFIGURAÇÕES DO JOGO -->
+        <!-- ========================= -->
 
-        <br>
+        <div class="config-jogo">
 
-        <select id="dificuldade">
+            <!-- Escolha do modo -->
+            <label for="modo">
 
-            <option value="facil">
-                🟢 Fácil
-            </option>
+                🎮 Modo de jogo:
 
-            <option value="medio">
-                🟡 Médio
-            </option>
+            </label>
 
-            <option value="impossivel">
-                🔴 Impossível
-            </option>
+            <br><br>
 
-        </select>
+            <select id="modo">
+
+                <option value="maquina">
+
+                    🤖 Contra a Máquina
+
+                </option>
+
+                <option value="2jogadores">
+
+                    👥 Dois Jogadores
+
+                </option>
+
+            </select>
+
+            <br><br>
+
+            <!-- Escolha do símbolo -->
+            <label for="simbolo">
+
+                ❌⭕ Escolha seu símbolo:
+
+            </label>
+
+            <br><br>
+
+            <select id="simbolo">
+
+                <option value="X">
+
+                    ❌ X
+
+                </option>
+
+                <option value="O">
+
+                    ⭕ O
+
+                </option>
+
+            </select>
+
+            <br><br>
+
+            <!-- Área da dificuldade -->
+            <div id="areaDificuldade">
+
+                <label for="dificuldade">
+
+                    🤖 Dificuldade:
+
+                </label>
+
+                <br><br>
+
+                <select id="dificuldade">
+
+                    <option value="facil">
+
+                        🟢 Fácil
+
+                    </option>
+
+                    <option value="medio">
+
+                        🟡 Médio
+
+                    </option>
+
+                    <option value="impossivel">
+
+                        🔴 Impossível
+
+                    </option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+        <!-- ========================= -->
+        <!-- STATUS DO JOGO -->
+        <!-- ========================= -->
+
+        <p id="status">
+
+            Vez do jogador X
+
+        </p>
+
+        <!-- ========================= -->
+        <!-- TABULEIRO -->
+        <!-- ========================= -->
+
+        <div class="tabuleiro">
+
+            <div class="casa"
+                 onclick="jogar(0)">
+            </div>
+
+            <div class="casa"
+                 onclick="jogar(1)">
+            </div>
+
+            <div class="casa"
+                 onclick="jogar(2)">
+            </div>
+
+            <div class="casa"
+                 onclick="jogar(3)">
+            </div>
+
+            <div class="casa"
+                 onclick="jogar(4)">
+            </div>
+
+            <div class="casa"
+                 onclick="jogar(5)">
+            </div>
+
+            <div class="casa"
+                 onclick="jogar(6)">
+            </div>
+
+            <div class="casa"
+                 onclick="jogar(7)">
+            </div>
+
+            <div class="casa"
+                 onclick="jogar(8)">
+            </div>
+
+        </div>
+
+        <!-- ========================= -->
+        <!-- BOTÃO DE REINICIAR -->
+        <!-- ========================= -->
+
+        <button
+            class="btn-reiniciar"
+            onclick="reiniciar()">
+
+            🔄 Reiniciar
+
+        </button>
 
     </div>
 
-</div>
+    <!-- ========================= -->
+    <!-- JAVASCRIPT -->
+    <!-- ========================= -->
+
+    <script src="velha.js"></script>
+
+</body>
+
+</html>
