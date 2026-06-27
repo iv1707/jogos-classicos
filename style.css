@@ -117,11 +117,26 @@ footer{
 
 /* ===== JOGO DA VELHA ===== */
 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#1e1b4b,#312e81);
+    color:white;
+    min-height:100vh;
+    padding:40px 20px;
+}
+
+/* ===== JOGO DA VELHA ===== */
+
 .container-jogo{
-    max-width:500px;
-    margin:50px auto;
+    max-width:600px;
+    margin:0 auto;
     text-align:center;
-    padding:20px;
 }
 
 .voltar{
@@ -133,17 +148,18 @@ footer{
 }
 
 .voltar:hover{
-    color:#0ea5e9;
+    color:#7dd3fc;
 }
 
 .container-jogo h1{
     margin-bottom:20px;
+    font-size:48px;
 }
 
 #status{
     font-size:22px;
-    margin-bottom:30px;
-    color:#cbd5e1;
+    margin:25px 0;
+    color:#e2e8f0;
 }
 
 .tabuleiro{
@@ -182,24 +198,38 @@ footer{
     border-radius:12px;
     font-size:18px;
     cursor:pointer;
+    transition:0.3s;
 }
 
 .btn-reiniciar:hover{
     background:#16a34a;
 }
 
-@media(max-width:600px){
+/* ===== CONFIGURAÇÕES ===== */
 
-    .tabuleiro{
-        grid-template-columns:repeat(3,90px);
-    }
+.config-jogo{
+    margin-bottom:25px;
+}
 
-    .casa{
-        width:90px;
-        height:90px;
-        font-size:45px;
-    }
+.config-jogo label{
+    font-size:18px;
+    color:white;
+    margin-right:10px;
+}
 
+.config-jogo select{
+    background:#a78bfa;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:10px;
+    font-size:16px;
+    cursor:pointer;
+    margin:5px;
+}
+
+.config-jogo select:hover{
+    background:#8b5cf6;
 }
 
 /* ===== JOGO DA MEMÓRIA ===== */
@@ -233,11 +263,27 @@ footer{
 }
 
 .carta.virada{
-    background:#ffffff;
+    background:white;
     color:#1e1b4b;
 }
 
+/* ===== RESPONSIVO ===== */
+
 @media(max-width:600px){
+
+    .container-jogo h1{
+        font-size:36px;
+    }
+
+    .tabuleiro{
+        grid-template-columns:repeat(3,90px);
+    }
+
+    .casa{
+        width:90px;
+        height:90px;
+        font-size:45px;
+    }
 
     #tabuleiroMemoria{
         grid-template-columns:repeat(4,80px);
@@ -249,31 +295,4 @@ footer{
         height:80px;
         font-size:35px;
     }
-
-}
-
-/* CONFIGURAÇÃO DA DIFICULDADE */
-
-.config-jogo{
-    margin-bottom:20px;
-}
-
-.config-jogo label{
-    font-size:18px;
-    color:white;
-    margin-right:10px;
-}
-
-.config-jogo select{
-    background:#a78bfa;
-    color:white;
-    border:none;
-    padding:10px 15px;
-    border-radius:10px;
-    font-size:16px;
-    cursor:pointer;
-}
-
-.config-jogo select:hover{
-    background:#8b5cf6;
 }
