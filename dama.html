@@ -1,1 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
 
+<head>
+
+    <!-- Configurações -->
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dama</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <!-- Container principal -->
+    <div class="container-jogo">
+
+        <!-- Botão voltar -->
+        <a
+            href="index.html"
+            class="voltar">
+
+            ⬅ Voltar ao início
+
+        </a>
+
+        <!-- Título -->
+        <h1>
+
+            ♟️ Jogo de Dama
+
+        </h1>
+
+        <!-- Configurações -->
+        <div class="config-jogo">
+
+            <label>
+
+                🎮 Modo:
+
+            </label>
+
+            <br><br>
+
+            <select id="modoDama">
+
+                <option value="2jogadores">
+
+                    👥 Dois Jogadores
+
+                </option>
+
+                <option value="maquina">
+
+                    🤖 Contra a Máquina
+
+                </option>
+
+            </select>
+
+        </div>
+
+        <!-- Status -->
+        <p id="statusDama">
+
+            Vez das peças vermelhas 🔴
+
+        </p>
+
+        <!-- Tabuleiro -->
+        <div id="tabuleiroDama">
+
+        </div>
+
+        <!-- Reiniciar -->
+        <button
+            class="btn-reiniciar"
+            onclick="reiniciarDama()">
+
+            🔄 Reiniciar
+
+        </button>
+
+    </div>
+
+    <!-- JavaScript -->
+    <script src="dama.js"></script>
+
+</body>
+
+</html>
