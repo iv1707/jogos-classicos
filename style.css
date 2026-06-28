@@ -319,45 +319,43 @@ h1{
 
 #tabuleiroDama {
 
-    width: 480px !important;
+    width: 480px;
 
-    height: 480px !important;
+    height: 480px;
 
-    margin: 20px auto !important;
+    margin: 20px auto;
 
-    display: grid !important;
+    display: grid;
 
-    grid-template-columns: repeat(8, 1fr) !important;
+    grid-template-columns: repeat(8, 60px);
 
-    grid-template-rows: repeat(8, 1fr) !important;
+    grid-template-rows: repeat(8, 60px);
 
-    border: 4px solid black !important;
-
-    background: black !important;
-
-    overflow: hidden !important;
+    border: 4px solid black;
 
 }
 
 /* Casas */
 
-.casa-dama {
+#tabuleiroDama .casa-dama {
 
-    width: 100% !important;
+    width: 60px;
 
-    height: 100% !important;
+    height: 60px;
 
-    display: flex !important;
+    display: flex;
 
-    justify-content: center !important;
+    justify-content: center;
 
-    align-items: center !important;
+    align-items: center;
+
+    box-sizing: border-box;
 
 }
 
 /* Casas claras */
 
-.clara {
+#tabuleiroDama .clara {
 
     background-color: #F5DEB3;
 
@@ -365,7 +363,7 @@ h1{
 
 /* Casas escuras */
 
-.escura {
+#tabuleiroDama .escura {
 
     background-color: #A0522D;
 
@@ -375,37 +373,36 @@ h1{
 
 /* Peças */
 
-.peca {
+#tabuleiroDama .peca {
 
     width: 45px;
+
     height: 45px;
 
     border-radius: 50%;
 
 }
 
-/* Peças vermelhas */
+/* Vermelhas */
 
-.vermelha {
+#tabuleiroDama .vermelha {
 
     background-color: red;
 
 }
 
-/* Peças azuis */
+/* Azuis */
 
-.azul {
+#tabuleiroDama .azul {
 
     background-color: blue;
 
 }
 
-/* Dama */
+/* Damas */
 
-.dama {
+#tabuleiroDama .dama {
 
     border: 4px solid gold;
 
 }
-
-
