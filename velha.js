@@ -1,10 +1,6 @@
-// =========================
+// =====================================
 // VARIÁVEIS DO JOGO
-// =========================
-
-let jogadorAtual = "X";
-
-let jogoAtivo = true;
+// =====================================
 
 let tabuleiro = [
     "", "", "",
@@ -12,9 +8,9 @@ let tabuleiro = [
     "", "", ""
 ];
 
-// =========================
-// CONFIGURAÇÕES
-// =========================
+let jogadorAtual = "X";
+
+let jogoAtivo = true;
 
 let modoJogo = "2jogadores";
 
@@ -22,11 +18,9 @@ let simboloJogador = "X";
 
 let simboloMaquina = "O";
 
-let dificuldadeAtual = "facil";
-
-// =========================
+// =====================================
 // COMBINAÇÕES DE VITÓRIA
-// =========================
+// =====================================
 
 const combinacoesVitoria = [
 
@@ -43,9 +37,9 @@ const combinacoesVitoria = [
 
 ];
 
-// =========================
+// =====================================
 // ELEMENTOS DA TELA
-// =========================
+// =====================================
 
 const modo =
     document.getElementById("modo");
@@ -59,15 +53,15 @@ const dificuldade =
 const areaDificuldade =
     document.getElementById("areaDificuldade");
 
-// =========================
-// JOGAR
-// =========================
+// =====================================
+// FUNÇÃO PRINCIPAL
+// =====================================
 
 function jogar(posicao){
 
     if(
-        tabuleiro[posicao] !== "" ||
-        !jogoAtivo
+        !jogoAtivo ||
+        tabuleiro[posicao] !== ""
     ){
         return;
     }
@@ -83,9 +77,9 @@ function jogar(posicao){
 
 }
 
-// =========================
+// =====================================
 // FAZER JOGADA
-// =========================
+// =====================================
 
 function fazerJogada(posicao){
 
@@ -114,10 +108,25 @@ function fazerJogada(posicao){
         "Vez do jogador " +
         jogadorAtual;
 
+    if(
+        modoJogo === "maquina" &&
+        jogadorAtual === simboloMaquina
+    ){
+
+        setTimeout(
+
+            jogadaMaquina,
+
+            600
+
+        );
+
+    }
+
 }
-// =========================
+// =====================================
 // VERIFICAR VITÓRIA
-// =========================
+// =====================================
 
 function verificarVitoria(){
 
@@ -128,13 +137,17 @@ function verificarVitoria(){
         let c = combinacao[2];
 
         if(
-            tabuleiro[a] &&
+
+            tabuleiro[a] !== "" &&
             tabuleiro[a] === tabuleiro[b] &&
             tabuleiro[a] === tabuleiro[c]
+
         ){
 
-            document.getElementById("status")
+            document
+                .getElementById("status")
                 .innerText =
+
                 "🏆 Jogador " +
                 tabuleiro[a] +
                 " venceu!";
@@ -142,88 +155,63 @@ function verificarVitoria(){
             jogoAtivo = false;
 
             return;
+
         }
+
     }
 
     if(!tabuleiro.includes("")){
 
-        document.getElementById("status")
+        document
+            .getElementById("status")
             .innerText =
+
             "🤝 Empate!";
 
         jogoAtivo = false;
-    }
-
-}
-
-// =========================
-// REINICIAR
-// =========================
-
-function reiniciar(){
-
-    simboloJogador =
-        simbolo.value;
-
-    simboloMaquina =
-        simboloJogador === "X"
-        ? "O"
-        : "X";
-
-    modoJogo =
-        modo.value;
-
-    dificuldadeAtual =
-        dificuldade.value;
-
-    jogadorAtual = "X";
-
-    jogoAtivo = true;
-
-    tabuleiro = [
-        "", "", "",
-        "", "", "",
-        "", "", ""
-    ];
-
-    const casas =
-        document.querySelectorAll(".casa");
-
-    casas.forEach(casa => {
-
-        casa.innerText = "";
-
-    });
-
-    document.getElementById("status")
-        .innerText =
-        "Vez do jogador X";
-
-    // Se estiver contra a máquina
-    if(
-        modoJogo === "maquina" &&
-        simboloJogador === "O"
-    ){
-
-        setTimeout(() => {
-
-            fazerJogadaMaquina();
-
-        }, 500);
 
     }
 
 }
 
-// =========================
+// =====================================
 // JOGADA DA MÁQUINA
-// =========================
+// =====================================
 
-function fazerJogadaMaquina(){
+function jogadaMaquina(){
 
     if(!jogoAtivo){
         return;
     }
+
+    let dificuldadeAtual =
+        dificuldade.value;
+
+    if(dificuldadeAtual === "facil"){
+
+        jogadaFacil();
+
+    }
+
+    else if(dificuldadeAtual === "medio"){
+
+        jogadaMedia();
+
+    }
+
+    else{
+
+        jogadaImpossivel();
+
+    }
+
+}
+
+// =====================================
+// MODO FÁCIL
+// =====================================
+
+function jogadaFacil(){
 
     let livres = [];
 
@@ -238,6 +226,7 @@ function fazerJogadaMaquina(){
     }
 
     let escolha =
+
         livres[
             Math.floor(
                 Math.random() *
@@ -249,23 +238,122 @@ function fazerJogadaMaquina(){
 
 }
 
-// =========================
-// ATUALIZAR MODO
-// =========================
+// =====================================
+// MODO MÉDIO
+// =====================================
+
+function jogadaMedia(){
+
+    jogadaFacil();
+
+}
+
+// =====================================
+// MODO IMPOSSÍVEL
+// =====================================
+
+function jogadaImpossivel(){
+
+    jogadaFacil();
+
+}
+
+// =====================================
+// REINICIAR
+// =====================================
+
+function reiniciar(){
+
+    modoJogo =
+        modo.value;
+
+    simboloJogador =
+        simbolo.value;
+
+    simboloMaquina =
+
+        simboloJogador === "X"
+        ? "O"
+        : "X";
+
+    jogadorAtual = "X";
+
+    jogoAtivo = true;
+
+    tabuleiro = [
+
+        "", "", "",
+        "", "", "",
+        "", "", ""
+
+    ];
+
+    const casas =
+
+        document.querySelectorAll(
+            ".casa"
+        );
+
+    casas.forEach(casa => {
+
+        casa.innerText = "";
+
+    });
+
+    document
+        .getElementById("status")
+        .innerText =
+
+        "Vez do jogador X";
+
+    // Máquina começa se jogador escolheu O
+    if(
+
+        modoJogo === "maquina" &&
+        simboloJogador === "O"
+
+    ){
+
+        setTimeout(
+
+            jogadaMaquina,
+
+            600
+
+        );
+
+    }
+
+}
+
+// =====================================
+// MOSTRAR DIFICULDADE
+// =====================================
 
 function atualizarModo(){
 
-    if(modo.value === "2jogadores"){
+    if(
+
+        modo.value ===
+        "2jogadores"
+
+    ){
 
         areaDificuldade
             .style
-            .display = "none";
+            .display =
 
-    }else{
+            "none";
+
+    }
+
+    else{
 
         areaDificuldade
             .style
-            .display = "block";
+            .display =
+
+            "block";
 
     }
 
@@ -273,27 +361,36 @@ function atualizarModo(){
 
 }
 
-// =========================
+// =====================================
 // EVENTOS
-// =========================
+// =====================================
 
 modo.addEventListener(
+
     "change",
+
     atualizarModo
+
 );
 
 simbolo.addEventListener(
+
     "change",
+
     reiniciar
+
 );
 
 dificuldade.addEventListener(
+
     "change",
+
     reiniciar
+
 );
 
-// =========================
-// INICIAR
-// =========================
+// =====================================
+// INICIAR O JOGO
+// =====================================
 
 atualizarModo();
