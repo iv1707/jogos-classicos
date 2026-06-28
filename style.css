@@ -313,3 +313,133 @@ h1{
 }
 
 }
+/* ========================= */
+/* JOGO DE DAMA */
+/* ========================= */
+
+#tabuleiroDama {
+
+    width: 480px;
+    height: 480px;
+
+    margin: 20px auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(8, 1fr);
+
+    border: 5px solid #333;
+
+}
+
+/* Casas */
+
+.casa-dama {
+
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+}
+
+/* Casa clara */
+
+.clara {
+
+    background: #fef3c7;
+
+}
+
+/* Casa escura */
+
+.escura {
+
+    background: #92400e;
+
+    cursor: pointer;
+
+}
+
+/* Peças */
+
+.peca {
+
+    width: 45px;
+    height: 45px;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+}
+
+.peca:hover {
+
+    transform: scale(1.1);
+
+}
+
+/* Vermelha */
+
+.vermelha {
+
+    background: #ef4444;
+
+}
+
+/* Azul */
+
+.azul {
+
+    background: #2563eb;
+
+}
+
+/* Dama */
+
+.dama {
+
+    border: 4px solid gold;
+
+}
+
+/* Casa selecionada */
+
+.selecionada {
+
+    outline: 4px solid #22c55e;
+
+}
+
+/* Responsividade */
+
+@media (max-width: 600px) {
+
+    #tabuleiroDama {
+
+        width: 320px;
+        height: 320px;
+
+    }
+
+    .casa-dama {
+
+        width: 40px;
+        height: 40px;
+
+    }
+
+    .peca {
+
+        width: 30px;
+        height: 30px;
+
+    }
+
+}
